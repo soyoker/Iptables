@@ -94,5 +94,30 @@
 | -Z | zero，清零，置零规则计数器 |
 | -E | rEname，重命名用户自定义链；引用计数不为 0 的自定义链，无法改名，也无法删除 |
 
+## 条件匹配
 
-<kbd>ctrl</kbd>
+### 基本匹配
+
+| 命令参数 | 作用说明 |
+| ---- | ---- |
+| -p | --protocol {tcp\|udp\|icmp}；匹配协议，如 TCP、UDP、ICMP
+| -[!]s | --src, --source IP\|Netaddr；匹配来源地址，IP/MASK，加叹号“!”表示除这个 IP 外
+| -[!]d | --dst, --destination IP\|Netaddr；匹配目标地址，IP/MASK，加叹号“!”表示除这个 IP 外
+| -i | --in-interface IFACE；匹配从这块网卡流入的数据；仅能用于 PREROUTING，INPUT 及 FORWARD 链上
+| -o | --out-interface IFACE；匹配从这块网卡流出的数据；仅能用于 FORWARD，OUTPUT 及 POSTROUTING 链上
+
+### 目标类型
+
+| 命令参数 | 作用说明 |
+| ---- | ---- |
+| TARGET | 跳转至指定的 TARGET 上 |
+| ACCEPT | 接受请求 |
+| DROP | 丢弃请求 |
+| REJECT | 拒绝请求 |
+| RETURN | 返回调用链 |
+| REDIRECT | 端口重定向 |
+| LOG | 记录日志 |
+| MARK | 做防火墙标记 |
+| DNAT | 目标地址转换 |
+| SNAT | 源地址转换 |
+| MASQUERADE | 地址伪装 |
